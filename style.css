@@ -1,0 +1,62 @@
+.container {
+	margin: 0px 45px;
+	padding: 0px 15px;
+}
+
+.pozadina1 {
+	background: #fff300;
+}
+
+body {
+	margin: 0;
+}
+
+nav {
+    font-family:verdana,arial,times,serif;
+    font-size:.875em;
+    overflow:hidden;
+    padding-left:4%;
+}
+
+nav a {
+    color:#33348e;
+    text-decoration:none;
+    text-transform:uppercase;
+}
+
+nav ul {
+	float:right;
+	padding: 0;	
+	margin: 0;
+}
+
+nav ul li {
+    list-style-type:none;
+    float:left;
+    position:relative;
+    padding:0;
+    margin:0;
+}
+
+nav ul li a {
+    display:block;
+    color:#000;
+    padding:.875em .625em;
+    margin:0;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+    background-color:#fff;
+    color:#33348e;
+    font-weight:normal;
+}
+
+#home .home a,
+#vijesti .vijesti a,
+#muzika .muzika a,
+#admin .admin a {
+    color:#33348e;
+    background-color:#fff;
+    pointer-events:none;
+}
