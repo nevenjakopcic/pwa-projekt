@@ -8,8 +8,8 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
-<body>
-<header>
+<body id="home">
+<header class="pozadina1">
 <?php require_once "./nav.php" ?>
 </header>
 </body>

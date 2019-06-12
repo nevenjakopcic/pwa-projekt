@@ -1,4 +1,4 @@
-<nav>
+<nav class="container">
 	<ul>
 		<li class="home"><a href="index.php">Home</a></li>
 		<li class="vijesti"><a href="vijesti.php">Vijesti</a></li>
