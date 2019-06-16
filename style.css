@@ -7,10 +7,6 @@
 	background: #fff300;
 }
 
-body {
-	margin: 0;
-}
-
 nav {
     font-family:verdana,arial,times,serif;
     font-size:.875em;
@@ -59,4 +55,15 @@ nav ul li a:focus {
     color:#33348e;
     background-color:#fff;
     pointer-events:none;
+}
+
+body {
+	margin: 0;
+}
+
+footer {
+    clear: both;
+    position: relative;
+    height: 200px;
+    margin-top: -200px;
 }
