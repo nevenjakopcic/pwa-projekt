@@ -1,4 +1,4 @@
-<form action="skripta.php" method="POST">
+<form enctype="multipart/form-data" action="skripta.php" method="POST">
 	<div class="form-item">
 		<label for="title">Naslov vijesti</label>
 		<div class="form-field">
