@@ -12,13 +12,6 @@
 		</div>
 		
 		<div class="form-item">
-			<label for="about">Kratki sadržaj vijesti (do 50 znakova)</label>
-			<div class="form-field">
-				<textarea name="about" id="" cols="30" rows="10" class="form-field-textual"></textarea>
-			</div>
-		</div>
-
-		<div class="form-item">
 			<label for="content">Sadržaj vijesti</label>
 			<div class="form-field">
 				<textarea name="content" id="" cols="30" rows="10" class="form-field-textual"></textarea>
@@ -38,6 +31,7 @@
 				<select name="category" id="" class="form-field-textual">
 					<option value="vijesti">Vijesti</option>
 					<option value="muzika">Muzika</option>
+					<option value="sport">Sport</option>
 				</select>
 			</div>
 		</div>
