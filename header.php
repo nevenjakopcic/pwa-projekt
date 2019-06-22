@@ -1,3 +1,4 @@
+<?php session_start();?>
 <header class="pozadina1">
 	<nav class="container">
 		<a href="index.php" class="logo"></a>
@@ -6,7 +7,14 @@
 			<li class="vijesti"><a href="vijesti.php">Vijesti</a></li>
 			<li class="muzika"><a href="muzika.php">Muzika</a></li>
 			<li class="sport"><a href="sport.php">Sport</a></li>
-			<li class="admin"><a href="admin.php">Admin</a></li>
+			<?php
+			if (isset($_SESSION['$korisnicko_ime'])) {
+				echo '<li class="logout"><a href="logout.php">Logout</a></li>';
+			} else {
+				echo '<li class="login"><a href="login.php">Login</a></li>';
+				echo '<li class="registracija"><a href="registracija.php">Registracija</a></li>';
+			}
+			?>
 		</ul>
 	</nav>
 </header>
