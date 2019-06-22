@@ -1,28 +1,27 @@
 <?php
+require_once 'connect.php';
+
 $title=$_POST['title'];
 $category=$_POST['category'];
-$image = file_get_contents($_FILES['picture']['tmp_name']);
+$picture = $_FILES['picture']['name'];
 $about=$_POST['about'];
 $content=$_POST['content'];
+if (isset($_POST['archive'])) {
+	$archive=1;
+} else {
+	$archive=0;
+}
+
+$target_dir = 'images/'.$picture;
+move_uploaded_file($_FILES["picture"]["tmp_name"], $target_dir);
+
+$query = "INSERT INTO clanak (naslov, sazetak, tekst, slika, kategorija, arhiva)
+	VALUES ('$title', '$about', '$content', '$picture', '$category', '$archive')";
+
+$result = mysqli_query($dbc, $query) or die('Error querying database.');
+$id = $dbc->insert_id;
+mysqli_close($dbc);
+
+$url = "clanak.php?id=$id";
+header("Location: $url");
 ?>
-
-<section role="main">
-	<div class="row">
-		<p class="category"><?php echo $category;?></p>
-		<h1 class="title"><?php echo $title;?></h1>
-		<p>AUTOR:</p>
-		<p>OBJAVLJENO:</p>
-	</div>
-
-	<section class="slika">
-		<?php echo sprintf('<img src="data:image/png;base64,%s" />', base64_encode($image));?>
-	</section>
-
-	<section class="about">
-		<p><?php echo $about;?></p>
-	</section>
-
-	<section class="sadrzaj">
-		<p><?php echo $content;?></p>
-	</section>
-</section>
