@@ -4,9 +4,9 @@
 <?php include_once "./clanciQuery.php" ?>
 <body id="vijesti">
 	<?php require_once "./header.php" ?>
-	<section class="vijesti">
+	<section class="clanci">
 		<?php
-			$query = "SELECT * from clanak WHERE arhiva=0 AND kategorija='vijesti' LIMIT 12";
+			$query = "SELECT * from clanak WHERE arhiva=0 AND kategorija='vijesti' ORDER BY id DESC LIMIT 12";
 			clanciQuery($query);
 		?>
 	</section>
