@@ -21,9 +21,9 @@
 	</div>
 
 	<div class="form-item">
-		<label for="photo">Slika: </label>
+		<label for="picture">Slika: </label>
 		<div class="form-field">
-			<input type="file" accept="image/jpg,image/gif,image/png" class="input-text" name="photo"/>
+			<input type="file" accept="image/jpg,image/gif,image/png" class="input-text" name="picture"/>
 		</div>
 	</div>
 
