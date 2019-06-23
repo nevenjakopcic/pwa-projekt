@@ -4,7 +4,7 @@
 <body id="unos">
 	<?php require_once "./header.php" ?>
 	<div class="mt-5 container">
-		<form enctype="multipart/form-data" action="loginSkripta.php" method="POST">
+		<form enctype="multipart/form-data" action="loginSkripta.php" method="POST" onsubmit="validacija()">
 
 			<div class="form-item">
 				<label for="ime">Ime</label>
@@ -61,18 +61,18 @@
 	</div>
 
 	<script type="text/javascript">
-		document.getElementById("slanje").onclick = function(event) {
-			var slanjeForme = true;
+		function validacija() {
 
 			// Ime mora biti uneseno
 			var poljeIme = document.getElementById("ime");
 			var ime = poljeIme.value;
 			if (ime.length== 0) {
-				slanjeForme = false;
 				poljeIme.style.border="1px dashed red";
 				document.getElementById("porukaIme").innerHTML="Ime mora biti uneseno!<br>";
+				event.preventDefault();
+				return false;
 			} else {
-				poljeContent.style.border="1px solid green";
+				poljeIme.style.border="1px solid green";
 				document.getElementById("porukaIme").innerHTML="";
 			}
 
@@ -80,9 +80,10 @@
 			var poljePrezime = document.getElementById("prezime");
 			var prezime = poljePrezime.value;
 			if (prezime.length== 0) {
-				slanjeForme = false;
 				poljePrezime.style.border="1px dashed red";
 				document.getElementById("porukaPrezime").innerHTML="Prezime mora biti uneseno!<br>";
+				event.preventDefault();
+				return false;
 			} else {
 				poljePrezime.style.border="1px solid green";
 				document.getElementById("porukaPrezime").innerHTML="";
@@ -92,9 +93,10 @@
 			var poljeKorisnickoIme = document.getElementById("korisnicko_ime");
 			var korisnicko_ime = poljeKorisnickoIme.value;
 			if (korisnicko_ime.length== 0) {
-				slanjeForme = false;
 				poljeKorisnickoIme.style.border="1px dashed red";
 				document.getElementById("porukaKorisnickoIme").innerHTML="Korisničko ime mora biti uneseno!<br>";
+				event.preventDefault();
+				return false;
 			} else {
 				poljeKorisnickoIme.style.border="1px solid green";
 				document.getElementById("porukaKorisnickoIme").innerHTML="";
@@ -106,24 +108,24 @@
 			var poljeLozinka2 = document.getElementById("lozinka2");
 			var lozinka2 = poljeLozinka2.value;
 			if (lozinka.length== 0) {
-				slanjeForme = false;
 				poljeLozinka.style.border="1px dashed red";
 				poljeLozinka2.style.border="1px dashed red";
 				document.getElementById("porukaLozinka").innerHTML="Lozinka mora biti unesena!";
+				event.preventDefault();
+				return false;
 			} else if (lozinka !== lozinka2) {
-				slanjeForme = false;
 				poljeLozinka.style.border="1px dashed red";
 				poljeLozinka2.style.border="1px dashed red";
 				document.getElementById("porukaLozinka").innerHTML="Lozinke moraju biti jednake!";
+				event.preventDefault();
+				return false;
 			} else {
 				poljeLozinka.style.border="1px solid green";
 				poljeLozinka2.style.border="1px solid green";
 				document.getElementById("porukaLozinka").innerHTML="";
 			}
 
-			if (slanjeForme == false) {
-				event.preventDefault();
-			}
+			return true;
 		};
 	</script>
 </body>
