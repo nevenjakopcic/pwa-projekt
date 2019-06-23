@@ -8,6 +8,9 @@
 			<li class="muzika"><a href="muzika.php">Muzika</a></li>
 			<li class="sport"><a href="sport.php">Sport</a></li>
 			<?php
+			if (isset($_SESSION['$razina']) && $_SESSION['$razina'] == 1) {
+				echo '<li class="unos"><a href="unos.php">Unos</a></li>';
+			}
 			if (isset($_SESSION['$korisnicko_ime'])) {
 				echo '<li class="logout"><a href="logout.php">Logout</a></li>';
 			} else {

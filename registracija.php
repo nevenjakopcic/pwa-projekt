@@ -4,7 +4,7 @@
 <body id="unos">
 	<?php require_once "./header.php" ?>
 	<div class="mt-5 container">
-		<form enctype="multipart/form-data" action="loginSkripta.php" method="POST" onsubmit="validacija()">
+		<form enctype="multipart/form-data" action="registracijaSkripta.php" method="POST" onsubmit="validacija()">
 
 			<div class="form-item">
 				<label for="ime">Ime</label>
@@ -27,7 +27,13 @@
 				<div class="form-field">
 					<input type="text" name="korisnicko_ime" id="korisnicko_ime" class="form-field-textual">
 				</div>
-				<span id="porukaKorisnickoIme" class="bojaPoruke"></span>
+				<span id="porukaKorisnickoIme" class="bojaPoruke">
+					<?php
+						if (isset($_POST['msg']) && $_POST['msg'] == 1) {
+							echo "Korisničko ime je već zauzeto!";
+						}
+					?>
+				</span>
 			</div>
 			
 			<div class="form-item">
@@ -48,7 +54,7 @@
 			<div class="form-item">
 				<label>Admin:
 					<div class="form-field">
-						<input type="checkbox" id="admin" name="admin">
+						<input type="checkbox" id="razina" name="razina">
 					</div>
 				</label>
 			</div>

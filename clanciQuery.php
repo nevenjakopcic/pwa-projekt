@@ -23,6 +23,7 @@ function clanakQuery($query) {
 	$result = mysqli_query($dbc, $query);
 	while ($row = mysqli_fetch_array($result)) {
 		echo '<img src="'.URLPATH.$row['slika'].'"';
+		echo '<br>';
 		echo '<h2>';
 		echo $row['naslov'];
 		echo '</h2>';
