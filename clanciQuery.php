@@ -13,6 +13,10 @@ function clanciQuery($query) {
 		echo $row['naslov'];
 		echo '</h2></a>';
 		echo '<p>'.$row['datum'].'</p>';
+		if (isset($_SESSION['$razina']) && $_SESSION['$razina'] == 1) {
+			echo '<a class="tipkica" href="edit.php?id='.$row['id'].'">Edit </a>';
+			echo '<a class="tipkica" href="delete.php?id='.$row['id'].'">Delete</a>';
+		}
 		echo '</article>';
 	}
 	$dbc->close();

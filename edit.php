@@ -3,13 +3,30 @@
 <?php require_once "./head.php" ?>
 <body id="unos">
 	<?php require_once "./header.php" ?>
+	<?php require_once "./connect.php" ?>
+	<?php
+	$sql = "SELECT naslov, tekst, kategorija, arhiva FROM clanak where id = ?";
+	$id = $_GET['id'];
+	$stmt = mysqli_stmt_init($dbc);
+	if (mysqli_stmt_prepare($stmt, $sql)) {
+		mysqli_stmt_bind_param($stmt, 'i', $id);
+		mysqli_stmt_execute($stmt);
+		mysqli_stmt_store_result($stmt);
+	}
+	if (mysqli_stmt_num_rows($stmt) == 0) {
+		header("Location: index.php");
+	}
+	mysqli_stmt_bind_result($stmt, $naslov, $tekst, $kategorija, $arhiva);
+	mysqli_stmt_fetch($stmt);
+	mysqli_close($dbc);
+	?>
 	<div class="my-5 container">
-		<h1>Unos nove vijesti</h1>
-		<form enctype="multipart/form-data" action="skripta.php" method="POST">
+		<h1>Editanje postojeće vijesti</h1>
+		<form enctype="multipart/form-data" action="editSkripta.php?id=<?php echo $id;?>" method="POST">
 			<div class="form-item">
 				<label for="title">Naslov vijesti</label>
 				<div class="form-field">
-					<input type="text" name="title" id="title" class="form-field-textual">
+				<input type="text" name="title" id="title" class="form-field-textual" value="<?php echo $naslov;?>"></input>
 				</div>
 				<span id="porukaTitle" class="bojaPoruke"></span>
 			</div>
@@ -17,7 +34,7 @@
 			<div class="form-item">
 				<label for="content">Sadržaj vijesti</label>
 				<div class="form-field">
-					<textarea name="content" id="content" cols="30" rows="10" class="form-field-textual"></textarea>
+				<textarea name="content" id="content" cols="30" rows="10" class="form-field-textual"><?php echo $tekst; ?></textarea>
 				</div>
 				<span id="porukaContent" class="bojaPoruke"></span>
 			</div>
@@ -35,9 +52,9 @@
 				<div class="form-field">
 					<select name="category" id="category" class="form-field-textual">
 						<option value="" disabled selected>---</option>
-						<option value="vijesti">Vijesti</option>
-						<option value="muzika">Muzika</option>
-						<option value="sport">Sport</option>
+						<option value="vijesti" <?php if($kategorija == "vijesti") echo "selected";?>>Vijesti</option>
+						<option value="muzika" <?php if($kategorija == "muzika") echo "selected";?>>Muzika</option>
+						<option value="sport" <?php if($kategorija == "sport") echo "selected";?>>Sport</option>
 					</select>
 				</div>
 				<span id="porukaKategorija" class="bojaPoruke"></span>
@@ -46,7 +63,7 @@
 			<div class="form-item">
 				<label>Spremiti u arhivu:
 					<div class="form-field">
-						<input type="checkbox" id="archive" name="archive">
+					<input type="checkbox" id="archive" name="archive" value="<?php echo $arhiva;?>">
 					</div>
 				</label>
 			</div>
@@ -57,7 +74,6 @@
 			</div>
 		</form>
 	</div>
-	<?php include_once "./footer.php"?>
 
 	<script type="text/javascript">
 		document.getElementById("slanje").onclick = function(event) {
@@ -87,19 +103,6 @@
 				document.getElementById("porukaContent").innerHTML="";
 			}
 
-			// Slika mora biti unesena
-			var poljeSlika = document.getElementById("picture");
-			var picture = poljeSlika.value;
-			if (picture.length == 0) {
-				slanjeForme = false;
-				poljeSlika.style.border="1px dashed red";
-				document.getElementById("porukaSlika").innerHTML = 
-					"Slika mora biti unesena!<br>";
-			} else {
-				poljeSlika.style.border = "1px solid green";
-				document.getElementById("porukaSlika").innerHTML="";
-			}
-			
 			// Kategorija mora biti unesena
 			var poljeCategory = document.getElementById("category");
 			if (poljeCategory.selectedIndex == 0) {

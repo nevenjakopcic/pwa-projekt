@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="en-US">
 <?php require_once "./head.php" ?>
-<body id="unos">
+<body id="registracija">
 	<?php require_once "./header.php" ?>
-	<div class="mt-5 container">
+	<div class="my-5 container">
+		<h1>Registracija</h1>
 		<form enctype="multipart/form-data" action="registracijaSkripta.php" method="POST" onsubmit="validacija()">
 
 			<div class="form-item">
@@ -65,6 +66,7 @@
 			</div>
 		</form>
 	</div>
+	<?php include_once "./footer.php"?>
 
 	<script type="text/javascript">
 		function validacija() {

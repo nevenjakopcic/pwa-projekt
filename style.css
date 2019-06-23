@@ -1,3 +1,8 @@
+.tipkica {
+	position:relative;
+	bottom:16px;
+}
+
 .pozadina1 {
 	background: #fff300;
 }
@@ -73,6 +78,9 @@ nav ul li a:focus {
 #vijesti .vijesti a,
 #muzika .muzika a,
 #sport .sport a,
+#unos .unos a,
+#login .login a,
+#registracija .registracija a,
 #admin .admin a {
     color:#33348e;
     background-color:#fff;
@@ -84,8 +92,11 @@ body {
 }
 
 footer {
-    clear: both;
-    position: relative;
-    height: 200px;
-    margin-top: -200px;
+	position:fixed;
+	left:0;
+	bottom:0;
+	width:100%;
+	background-color:#fff300;
+	color:black;
+	text-align:center;
 }

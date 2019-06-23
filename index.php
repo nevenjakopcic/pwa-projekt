@@ -4,7 +4,7 @@
 <?php include_once "./clanciQuery.php" ?>
 <body id="home">
 	<?php require_once "./header.php" ?>
-	<div class="mt-5 container">
+	<div class="my-5 container">
 		<h3>Vijesti</h3>
 		<div class="row">
 			<?php
@@ -28,6 +28,7 @@
 				clanciQuery($query);
 			?>
 		</div>
+	<?php include_once "./footer.php" ?>
 	</div>
 </body>
 </html>
